@@ -61,7 +61,7 @@ docker build -t snort2-image .
 ```bash
 ./run.sh
 ```
-### Inside run.sh
+## Inside ```run.sh```:
 
 1. **Create Docker Network**
 
@@ -132,7 +132,24 @@ snort -T -i eth0 -c /etc/snort/snort.conf
    ```bash
    nano /etc/snort/rules/local.rules
    ```
-   
+   ### **Here how you can create your own rules**
+
+  Write your custom rules: A basic rule format is:
+
+   ```bash
+    alert <protocol> <source_ip> <source_port> -> <dest_ip> <dest_port> (msg:"Your message"; sid:1000001; rev:1;)
+   ```
+
+   # Example
+
+## 1. Rule to alert on ICMP (ping):
+
+    alert icmp any any -> $HOME_NET any (msg: "ICMP Ping Detected"; sid:100001; rev:1;)
+
+## 2. Rule for detecting SSH authentication:
+
+    alert tcp any any -> $HOME_NET any (msg: "SSH AUTHENTICATION ATTEMP"; sid:100002; rev:1;)
+    
 
 
 
