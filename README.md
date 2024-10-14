@@ -124,7 +124,8 @@ Replace ```<network_interface_name>``` with the name of the network interface yo
 
 you can check your ```<network_interface_name>``` using ```ifconfig``` command.
 
-## Start Snort
+## Start Snort 
+TO test Snort's configuration and ensure that it is correctly set up.
 
 ```bash
 snort -T -i <network_interface_name> -c /etc/snort/snort.conf
@@ -163,7 +164,20 @@ snort -T -i eth0 -c /etc/snort/snort.conf
 ## 2. Rule for detecting SSH authentication:
 
     alert tcp any any -> $HOME_NET any (msg: "SSH AUTHENTICATION ATTEMP"; sid:100002; rev:1;)
-    
+
+
+# Run Snort using root user:
+
+    snort -q -l /var/log/snort -i network_interface -A console -c /etc/snort/snort.conf
+
+## NOTE: 
+If no error is generated then it's working fine. 
+
+## Example
+
+    snort -q -l /var/log/snort -i eth0 -A console -c /etc/snort/snort.conf
+
+
 
 
 
