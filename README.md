@@ -96,6 +96,20 @@ passwd
 ```
 You will be prompted to enter a new password. Make sure to set your own secure password for the root user.
 
+## Setting Up ```$HOME_NET``` in Snort
+
+### 1. Open the Snort configuration file:
+
+    sudo nano /etc/snort/snort.conf
+
+### 2. Locate the ```$HOME_NET``` definition, usually formatted as:
+    
+    ipvar HOME_NET any
+
+### 3. Modify the IP address to reflect your network ```example```:
+    
+    ipvar HOME_NET 192.168.0.0/24
+
 ## Enable Promiscuous Mode
 
 To enable promiscuous mode on the network interface, use the following command:
