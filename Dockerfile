@@ -52,8 +52,8 @@ RUN apt update -y && \
 
 # Download and install Snort
 RUN wget https://www.snort.org/downloads/snort/snort-${VERSION}.tar.gz && \
-    tar -xzf snort-2.9.20.tar.gz && \
-    cd snort-2.9.20 && \
+    tar -xzf snort-${VERSION}.tar.gz && \
+    cd snort-${VERSION} && \
     CPPFLAGS="-I/usr/include/tirpc" LDFLAGS="-ltirpc" ./configure --enable-sourcefire --enable-open-appid && \
     make && \
     make install && \
@@ -80,7 +80,7 @@ RUN mkdir /etc/snort /var/log/snort && \
     chown snorty:snorty /etc/snort /var/log/snort
 
 # Create an empty local.rules file in the standard location
-RUN touch /etc/snort/local.rules
+RUN touch /etc/snort/rules/local.rules
 
 #copy all files from the etc directory to /etc/snort/
 COPY etc/ /etc/snort/
